@@ -1,0 +1,4 @@
+lychee
+kivy
+Flask
+python-dotenv

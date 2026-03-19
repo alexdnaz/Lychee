@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Articles</title>
+</head>
+<body>
+    <h1>Pending Articles for Voting</h1>
+    <ul>
+        {% for article in pending_articles %}
+        <li>
+            <strong>{{ article.title }}</strong> - {{ article.category }}<br>
+            <form action="{{ url_for('vote_on_article', article_id=article.id) }}" method="post">
+                <button type="submit" name="vote" value="approve">Approve</button>
+                <button type="submit" name="vote" value="reject">Reject</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

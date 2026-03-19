@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results</h2>
+    <ul>
+        {% for result in results %}
+            <li><a href="{{ url_for('view_article', article_id=result.id) }}">{{ result.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

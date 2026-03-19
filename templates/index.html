@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lychee.css') }}" />
+    <title>Lychee Project</title>
+</head>
+<body>
+    <h1>Welcome to the Lychee Project</h1>
+    <p>
+        A knowledge base, built by you.<br />
+        The Lychee Encyclopedia is a place to store, read, and organize facts and knowledge.
+    </p>
+
+    <h2>Menu:</h2>
+    <ul>
+        <li><a href="{{ url_for('submit_article') }}">Submit an Article</a></li>
+        <li><a href="{{ url_for('view_all_categories') }}">View All Categories</a></li>
+        <li><a href="{{ url_for('view_all_articles_page') }}">View All Articles</a></li>
+        <li><a href="{{ url_for('view_pending_articles') }}">View Pending Articles</a></li>
+        <li><a href="{{ url_for('test') }}">Test Link</a></li>
+    </ul>
+</body>
+</html>

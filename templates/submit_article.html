@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit an Article</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lychee.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Create New Article:</h1>
+
+    <form action="{{ url_for('submit_article') }}" method="POST" enctype="multipart/form-data">
+        <!-- Title Field -->
+        <div class="form-group">
+            <label for="title">Article Title</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <!-- Category Selection (dynamically populated) -->
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <!-- Rich Text Editor for Article Body -->
+        <div class="form-group">
+            <label for="body">Content:</label>
+            <textarea id="body" name="body" rows="10" placeholder="Write your article here..." required></textarea>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label for="image">Upload Cover Image</label>
+            <input type="file" id="image" name="image">
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="form-actions">
+            <button type="button" id="save-draft">Save as Draft</button>
+            <button type="submit" id="publish">Publish</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
