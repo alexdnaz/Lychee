@@ -19,7 +19,9 @@ if not _secret:
     raise RuntimeError("FLASK_SECRET_KEY is required. Set it in your environment or .env")
 app.secret_key = _secret
 
-app.config["DATABASE"] = "lychee.db"  # Configure the database path
+# Configure the database path.
+# In production (e.g., Render), point this at a persistent disk mount.
+app.config["DATABASE"] = os.environ.get("DATABASE_PATH", "lychee.db")
 
 def get_db():
     """Connects to the database, creates a new connection if not already connected."""
@@ -36,6 +38,9 @@ def close_connection(exception):
 
 @app.route('/')
 def home():
+    # Ensure tables exist (safe no-op if already created)
+    db = get_db()
+    ArticleManager(db).create_tables()
     return render_template('index.html')
 
 @app.route('/submit_article', methods=['GET', 'POST'])

@@ -1,4 +1,8 @@
-lychee
-kivy
 Flask
 python-dotenv
+gunicorn
+
+# NOTE: Remove these if not needed for your deployment.
+# They were present in the original environment but are not required for the Flask web app.
+lychee
+kivy
